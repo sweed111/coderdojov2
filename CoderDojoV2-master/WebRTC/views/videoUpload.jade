@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title YouTube API Uploads via CORS
+    link(rel='stylesheet', href='css/upload_video.css')
+    link(rel='stylesheet', href="https://fonts.googleapis.com/css?family=Open+Sans", type='text/css')
+  body
+    span#signinButton.pre-sign-in
+      //
+        IMPORTANT: Replace the value of the <code>data-clientid</code>
+        attribute in the following tag with your project's client ID.
+      span.g-signin(data-callback='signinCallback', data-clientid='505327999353-i3fdaov83bk0p2mo90umekho8c0cuspg.apps.googleusercontent.com', data-cookiepolicy='single_host_origin', data-scope='https://www.googleapis.com/auth/youtube.upload https://www.googleapis.com/auth/youtube')
+    .post-sign-in
+      div
+        img#channel-thumbnail
+        span#channel-name
+      div
+        label(for='title') Title:
+        input#title(type='text', value='Default Title')
+      div
+        label(for='description') Description:
+        textarea#description Default description
+      div
+        label(for='privacy-status') Privacy Status:
+        select#privacy-status
+          option public
+          option unlisted
+          option private
+      div
+        input#file.button(input='', type='file', accept='video/*')
+        button#button Upload Video
+        .during-upload
+          p
+            span#percent-transferred
+            | % done (
+            span#bytes-transferred
+            | /
+            span#total-bytes
+            |  bytes)
+          progress#upload-progress(max='1', value='0')
+        .post-upload
+          p
+            | Uploaded video with id 
+            span#video-id
+            | . Polling for status...
+          ul#post-upload-status
+          #player
+        p#disclaimer
+          | By uploading a video, you certify that you own all rights to the content or that you are authorized by the owner to make the content publicly available on YouTube, and that it otherwise complies with the YouTube Terms of Service located at 
+          a(href='http://www.youtube.com/t/terms', target='_blank') http://www.youtube.com/t/terms
+      script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
+      script(src='//apis.google.com/js/client:plusone.js')
+      script(src='js/cors_upload.js')
+      script(src='js/upload_video.js')

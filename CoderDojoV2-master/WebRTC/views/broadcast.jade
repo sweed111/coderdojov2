@@ -1,0 +1,84 @@
+
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    title Broadcast
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='css/bootstrap.min.css')
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    style.
+      audio, video {
+                -moz-transition: all 1s ease;
+                -ms-transition: all 1s ease;
+
+                -o-transition: all 1s ease;
+                -webkit-transition: all 1s ease;
+                transition: all 1s ease;
+                vertical-align: middle;
+                
+                max-width: 100%;
+                height: auto;
+                border-style: solid;
+                border-width: 10px;
+                border-color: white;
+                
+                
+            }
+
+            .setup {
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+                font-size: 102%;
+                height: 47px;
+                margin-left: -9px;
+                margin-top: 8px;
+                position: absolute;
+            }
+
+            p { padding: 1em; }
+
+            li {
+                border-bottom: 1px solid rgb(189, 189, 189);
+                border-left: 1px solid rgb(189, 189, 189);
+                padding: .5em;
+            }
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            #start-conferencing {
+                margin-left: 0em;
+            }
+            #conference-name{
+                margin-left: 0em;
+                width: 123px;
+            }
+            
+  script.
+    document.createElement('article')
+  body
+    article
+      div(class='container')
+        div(class='page-header')
+          h1 CoderDojo Broadcasting
+        div(class='form-group visible')
+          label(for='conference-name') Broadcast Name:
+          input(type="text", id="conference-name",class='form-control')
+        button(id="start-conferencing",class="btn btn-primary") New Broadcast
+        table(id="rooms-list" class="visible")
+     
+        div(id="participants")
+      
+
+script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js')          
+script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')    
+script(src='//www.webrtc-experiment.com/firebase.js')
+script(src='//www.webrtc-experiment.com/RTCPeerConnection-v1.5.js')
+script(src='js/broadcast.js')
+script(src='js/broadcast-ui.js')
+
+
+      

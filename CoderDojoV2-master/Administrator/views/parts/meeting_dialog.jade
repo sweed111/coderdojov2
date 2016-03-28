@@ -1,0 +1,54 @@
+﻿div#meeting-dialog(class="modal" tabindex="-1" role="dialog")
+    div(class="modal-dialog" role="document")
+        div(class="modal-content")
+            div(class="modal-header")
+                button(type="button" class="close" data-dismiss="modal")
+                    span &times
+                h4(class="modal-title") Meeting
+            div(class="modal-body")                      
+                form(role="form")
+                    input(type="hidden" name="name")                     
+                    div(class="form-group")
+                        label(style="width:100%") Location:
+                        select#meeting-dialog-dojos(class="form-control" name="location")
+                    input(type="hidden" name="location")                     
+                    div(class="form-group")
+                        label(style="width:100%") Password:
+                            input(class="form-control" style="font-weight:normal" type="text" name="password" placeholder="password")                     
+            div(class="modal-footer")
+                button(type="button" class="btn btn-danger pull-left" data-dismiss="modal" value="remove") Delete
+                button(type="button" class="btn btn-primary" data-dismiss="modal" value="ok") OK
+                button(type="button" class="btn btn-default" data-dismiss="modal" value="cancel") Cancel
+
+script.
+
+    function MeetingDialog() {
+
+        var self = DataDialog('meeting');
+        
+        $('#meeting-dialog').on('hide.bs.modal', function (e) {
+            var selected = $('#meeting-dialog-dojos option:selected');
+            var name = selected.text();
+            $('input[name="name"]').val(name);
+        })
+
+        self.load = function(callback) {
+            data_gateway = DataGateway('dojo');
+            data_gateway.get(function (err, data) {
+                var divs = [];
+                $.each(data, function (i, dojo) {
+                    var option = $('<option/>').attr({
+                        value: dojo._id
+                    });
+                    option.append(dojo.name);
+                    divs.push(option);
+                });
+                $(self.id + '-dojos').empty().append(divs);
+                callback();
+            });
+        }
+              
+        return self;
+    }
+
+

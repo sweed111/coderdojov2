@@ -1,0 +1,31 @@
+{
+  "name": "Administrator",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    
+    "start": "forever start ./bin/www.js",
+    "stop": "forever stop ./bin/www.js",
+    "poststop": "mongo admin --eval 'db.shutdownServer()' > /dev/null"
+  },
+  "description": "Administrator",
+  "author": {
+    "name": "",
+    "email": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "cookie-parser": "^1.4.0",
+    "debug": "^2.2.0",
+    "dry-layers": "*",
+    "express": "^4.13.3",
+    "express-session": "^1.11.3",
+    "jade": "^1.11.0",
+    "mongodb": "^2.0.45",
+    "morgan": "~1.3.0",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.3.0",
+    "stylus": "^0.42.3"
+  }
+}
